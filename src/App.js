@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import Form from './container/form/form';
+import { useState } from 'react';
+import {nanoid} from "nanoid"
 
 function App() {
+
+  const [tasks, setTasks] = useState([])
+
+  const addTask = (name, description, priority) => {
+    const newTask = {
+      id: nanoid(),
+      name: name,
+      description: description,
+      priority: priority,
+      isDone: false
+    }
+    console.log(newTask)
+    setTasks(valeurActuelle => [...valeurActuelle, newTask])
+  }
+
+  // const tab = [1, 2, 3, 4]
+  // const tab2 = [...tab, 5]
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form onAddTask={addTask}></Form>
+      
     </div>
   );
 }
