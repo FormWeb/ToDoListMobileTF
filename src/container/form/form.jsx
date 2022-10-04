@@ -2,8 +2,10 @@ import { useState } from "react"
 
 const Form = (props) => {
 
+    // Props
     const { onAddTask } = props
 
+    // State
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [priority, setPriority] = useState("normal")
